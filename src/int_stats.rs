@@ -1,32 +1,14 @@
 use std::cmp::Ordering::{Equal, Greater, Less};
 use std::collections::HashMap;
 
-fn main() {
-    let vals = vec![10, 5, 3]; // mean=6, median=5, mode=None
-    let stats = calc_stats(&vals);
-    println!("Stats for {:?}: {:#?}", vals, stats);
-
-    let vals = vec![3, 1, 2, 3, 4]; // mean=2.6, median=3, mode=3
-    let stats = calc_stats(&vals);
-    println!("Stats for {:?}: {:#?}", vals, stats);
-
-    let vals = vec![3, 4, 2, 10, 4, 0]; // mean=3.83, median=3.5, mode=4
-    let stats = calc_stats(&vals);
-    println!("Stats for {:?}: {:#?}", vals, stats);
-
-    let vals = vec![2, 0, 2, 3, 4]; // mean=2.2, median=2, mode=2
-    let stats = calc_stats(&vals);
-    println!("Stats for {:?}: {:#?}", vals, stats);
-}
-
 #[derive(Debug)]
-struct IntStats {
+pub struct IntStats {
     mean: f64,
     median: f64,
     mode: Option<i32>,
 }
 
-fn calc_stats(vals: &Vec<i32>) -> IntStats {
+pub fn calc_stats(vals: &Vec<i32>) -> IntStats {
     let vals = sorted_clone(vals);
 
     let (sum, occurences) = collect_sum_and_occurrences(&vals);
